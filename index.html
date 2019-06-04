@@ -14,14 +14,9 @@
     //Seperate the array from the other arguments:
     let arr = arguments[0];
     //Remove duplicate items in array:
-    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
-    let newArr = arr.reduce(
-    function (accumulator, currentValue) {
-      if (accumulator.indexOf(currentValue) === -1) {
-        accumulator.push(currentValue);
-      }
-      return accumulator;
-    }, [])
+    //https://www.youtube.com/watch?v=x7Ryo47Y3_g
+    let set = new Set(arr);
+    let newArr = [...set];
     //Destroy elements based on the provided arguments:
     for (i = 1; i < arguments.length; i++) {
        if (newArr.indexOf(arguments[i]) >= 0) {
