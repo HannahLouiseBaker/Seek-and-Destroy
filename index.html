@@ -9,20 +9,19 @@
   <p>You will be provided with an initial array (the first argument in the destroyer function), followed by one or more arguments. Remove all elements from the initial array that are of the same value as these arguments.</p>
   <p>For instance, <code>destroyer(["possum", "trollo", 12, "safari", "hotdog", 92, 65, "grandma", "bugati", "trojan", "yacht"], "yacht", "possum", "trollo", "safari", "hotdog", "grandma", "bugati", "trojan")</code> should return:</p>
   <script>
-  //Is there an easier way to do this?
+  //A simpler way:
   function destroyer() {
-    //Seperate the array from the other arguments:
+    //Seperate the arguments into two arrays:
     let arr = arguments[0];
-    //Remove duplicate items in array:
-    //https://www.youtube.com/watch?v=x7Ryo47Y3_g
-    let set = new Set(arr);
-    let newArr = [...set];
-    //Destroy elements based on the provided arguments:
+    let secondArr = [];
     for (i = 1; i < arguments.length; i++) {
-       if (newArr.indexOf(arguments[i]) >= 0) {
-          newArr.splice(newArr.indexOf(arguments[i]), 1);
-        }
-      }
+      secondArr.push(arguments[i]);
+    }
+    //Create a new array by filtering out elements of the first array that appear in the second array:
+    var newArr = arr.filter(function (item) {
+      if (secondArr.indexOf(item) < 0) {
+        return true;
+      }});
     return newArr;
   }
   document.write(destroyer(["possum", "trollo", 12, "safari", "hotdog", 92, 65, "grandma", "bugati", "trojan", "yacht"], "yacht", "possum", "trollo", "safari", "hotdog", "grandma", "bugati", "trojan"));
